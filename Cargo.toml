@@ -1,0 +1,20 @@
+[package]
+name = "unstable-odds"
+version = "1.0.0"
+edition = "2021"
+rust-version = "1.88"
+description = "A ridiculous terminal horse-racing simulator. Name horses after your friends, bet fake money."
+license = "MIT"
+publish = false
+
+[dependencies]
+ratatui = { version = "0.30", default-features = false, features = ["crossterm"] }
+crossterm = "0.29"
+fastrand = "2.5"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# The pre-race odds simulation runs a few thousand races; a little optimisation
+# keeps `cargo run` snappy without needing --release.
+[profile.dev]
+opt-level = 1
